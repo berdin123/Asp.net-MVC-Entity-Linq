@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseOdevimModelStoreContainer" CdmEntityContainer="DatabaseOdevimEntities">
+    <EntitySetMapping Name="DEPARTMENT">
+      <EntityTypeMapping TypeName="DatabaseOdevimModel.DEPARTMENT">
+        <MappingFragment StoreEntitySet="DEPARTMENT">
+          <ScalarProperty Name="Dname" ColumnName="Dname" />
+          <ScalarProperty Name="Dnumber" ColumnName="Dnumber" />
+          <ScalarProperty Name="Mgr_ssn" ColumnName="Mgr_ssn" />
+          <ScalarProperty Name="Mgr_start_date" ColumnName="Mgr_start_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEE">
+      <EntityTypeMapping TypeName="DatabaseOdevimModel.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Minit" ColumnName="Minit" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Ssn" ColumnName="Ssn" />
+          <ScalarProperty Name="Bdate" ColumnName="Bdate" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Super_ssn" ColumnName="Super_ssn" />
+          <ScalarProperty Name="Dno" ColumnName="Dno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROJECT">
+      <EntityTypeMapping TypeName="DatabaseOdevimModel.PROJECT">
+        <MappingFragment StoreEntitySet="PROJECT">
+          <ScalarProperty Name="Pname" ColumnName="Pname" />
+          <ScalarProperty Name="Pnumber" ColumnName="Pnumber" />
+          <ScalarProperty Name="Plocation" ColumnName="Plocation" />
+          <ScalarProperty Name="Dnum" ColumnName="Dnum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPENDENT">
+      <EntityTypeMapping TypeName="DatabaseOdevimModel.DEPENDENT">
+        <MappingFragment StoreEntitySet="DEPENDENT">
+          <ScalarProperty Name="Essn" ColumnName="Essn" />
+          <ScalarProperty Name="Dependent_name" ColumnName="Dependent_name" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Bdate" ColumnName="Bdate" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPT_LOCATIONS">
+      <EntityTypeMapping TypeName="DatabaseOdevimModel.DEPT_LOCATIONS">
+        <MappingFragment StoreEntitySet="DEPT_LOCATIONS">
+          <ScalarProperty Name="Dnumber" ColumnName="Dnumber" />
+          <ScalarProperty Name="Dlocation" ColumnName="Dlocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WORKS_ON">
+      <EntityTypeMapping TypeName="DatabaseOdevimModel.WORKS_ON">
+        <MappingFragment StoreEntitySet="WORKS_ON">
+          <ScalarProperty Name="Essn" ColumnName="Essn" />
+          <ScalarProperty Name="Pno" ColumnName="Pno" />
+          <ScalarProperty Name="Hours" ColumnName="Hours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

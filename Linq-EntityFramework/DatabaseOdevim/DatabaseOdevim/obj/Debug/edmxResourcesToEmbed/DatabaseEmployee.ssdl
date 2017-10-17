@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseOdevimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="Dnumber" />
+    </Key>
+    <Property Name="Dname" Type="varchar" MaxLength="50" />
+    <Property Name="Dnumber" Type="int" Nullable="false" />
+    <Property Name="Mgr_ssn" Type="int" Nullable="false" />
+    <Property Name="Mgr_start_date" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DatabaseOdevim.dbo.DEPENDENT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DEPENDENT">
+    <Key>
+      <PropertyRef Name="Essn" />
+    </Key>
+    <Property Name="Essn" Type="int" Nullable="false" />
+    <Property Name="Dependent_name" Type="varchar" MaxLength="100" />
+    <Property Name="Sex" Type="varchar" MaxLength="5" />
+    <Property Name="Bdate" Type="date" />
+    <Property Name="Relationship" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DatabaseOdevim.dbo.DEPT_LOCATIONS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DEPT_LOCATIONS">
+    <Key>
+      <PropertyRef Name="Dnumber" />
+    </Key>
+    <Property Name="Dnumber" Type="int" Nullable="false" />
+    <Property Name="Dlocation" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="Ssn" />
+    </Key>
+    <Property Name="Fname" Type="varchar" MaxLength="50" />
+    <Property Name="Minit" Type="varchar" MaxLength="5" />
+    <Property Name="Lname" Type="varchar" MaxLength="50" />
+    <Property Name="Ssn" Type="int" Nullable="false" />
+    <Property Name="Bdate" Type="date" />
+    <Property Name="Adress" Type="varchar" MaxLength="200" />
+    <Property Name="Sex" Type="varchar" MaxLength="5" />
+    <Property Name="Salary" Type="int" />
+    <Property Name="Super_ssn" Type="int" />
+    <Property Name="Dno" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROJECT">
+    <Key>
+      <PropertyRef Name="Pnumber" />
+    </Key>
+    <Property Name="Pname" Type="varchar" MaxLength="50" />
+    <Property Name="Pnumber" Type="int" Nullable="false" />
+    <Property Name="Plocation" Type="varchar" MaxLength="50" />
+    <Property Name="Dnum" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DatabaseOdevim.dbo.WORKS_ON' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WORKS_ON">
+    <Key>
+      <PropertyRef Name="Essn" />
+      <PropertyRef Name="Pno" />
+    </Key>
+    <Property Name="Essn" Type="int" Nullable="false" />
+    <Property Name="Pno" Type="int" Nullable="false" />
+    <Property Name="Hours" Type="float" />
+  </EntityType>
+  <Association Name="FK_DEPENDENT_EMPLOYEE">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="DEPENDENT" Type="Self.DEPENDENT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Ssn" />
+      </Principal>
+      <Dependent Role="DEPENDENT">
+        <PropertyRef Name="Essn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLOYEE_EMPLOYEE">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+    <End Role="EMPLOYEE1" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Ssn" />
+      </Principal>
+      <Dependent Role="EMPLOYEE1">
+        <PropertyRef Name="Super_ssn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_DEPARTMENT">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1" />
+    <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="Dnumber" />
+      </Principal>
+      <Dependent Role="PROJECT">
+        <PropertyRef Name="Dnum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WORKS_ON_EMPLOYEE">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="WORKS_ON" Type="Self.WORKS_ON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Ssn" />
+      </Principal>
+      <Dependent Role="WORKS_ON">
+        <PropertyRef Name="Essn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseOdevimModelStoreContainer">
+    <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPENDENT" EntityType="Self.DEPENDENT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[DEPENDENT].[Essn] AS [Essn], 
+[DEPENDENT].[Dependent_name] AS [Dependent_name], 
+[DEPENDENT].[Sex] AS [Sex], 
+[DEPENDENT].[Bdate] AS [Bdate], 
+[DEPENDENT].[Relationship] AS [Relationship]
+FROM [dbo].[DEPENDENT] AS [DEPENDENT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DEPT_LOCATIONS" EntityType="Self.DEPT_LOCATIONS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[DEPT_LOCATIONS].[Dnumber] AS [Dnumber], 
+[DEPT_LOCATIONS].[Dlocation] AS [Dlocation]
+FROM [dbo].[DEPT_LOCATIONS] AS [DEPT_LOCATIONS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WORKS_ON" EntityType="Self.WORKS_ON" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[WORKS_ON].[Essn] AS [Essn], 
+[WORKS_ON].[Pno] AS [Pno], 
+[WORKS_ON].[Hours] AS [Hours]
+FROM [dbo].[WORKS_ON] AS [WORKS_ON]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_DEPENDENT_EMPLOYEE" Association="Self.FK_DEPENDENT_EMPLOYEE">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="DEPENDENT" EntitySet="DEPENDENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLOYEE_EMPLOYEE" Association="Self.FK_EMPLOYEE_EMPLOYEE">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="EMPLOYEE1" EntitySet="EMPLOYEE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_DEPARTMENT" Association="Self.FK_PROJECT_DEPARTMENT">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+      <End Role="PROJECT" EntitySet="PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WORKS_ON_EMPLOYEE" Association="Self.FK_WORKS_ON_EMPLOYEE">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="WORKS_ON" EntitySet="WORKS_ON" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

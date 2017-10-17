@@ -1,0 +1,9 @@
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\bin\Debug\DatabaseOdevim.exe.config
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\bin\Debug\DatabaseOdevim.exe
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\bin\Debug\DatabaseOdevim.pdb
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\bin\Debug\EntityFramework.dll
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\bin\Debug\EntityFramework.xml
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\obj\Debug\LinqAlistirmam.csprojResolveAssemblyReference.cache
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\obj\Debug\LinqAlistirmam.csproj.CoreCompileInputs.cache
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\obj\Debug\DatabaseOdevim.exe
+C:\Users\Kubilay TÜRK\Desktop\VisualStudioProjelerim\DatabaseOdevim\DatabaseOdevim\obj\Debug\DatabaseOdevim.pdb
